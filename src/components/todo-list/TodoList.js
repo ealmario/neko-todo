@@ -95,7 +95,7 @@ export default class TodoList extends Component {
                   addTodo={this.add}
                 />
                 <ul className={styles.tlList}>
-                  {todoList.length > 0 ? todoList: "No tasks for today"}
+                  {todoList.length > 0 ? todoList: <p className={styles.emptyText}>No tasks for today</p>}
                 </ul>
                 <figure className={styles.border}>
                   <img src={neko} alt="Neko Border"/>
@@ -107,7 +107,7 @@ export default class TodoList extends Component {
             <div className={styles.tlTasks}>
               <h6 className={styles.title}>Completed</h6>
               <ul className={styles.tlCompleted}>
-                {archivedList.length === 0 ? "No completed tasks" : archivedList}
+                {archivedList.length === 0 ? <p className={styles.emptyText}>No completed tasks yet</p> : archivedList}
               </ul>
               <figure className={styles.border}>
                 <img src={neko} alt="Neko Border"/>

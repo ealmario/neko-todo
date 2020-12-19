@@ -47,6 +47,7 @@ export default class NewTodoForm extends Component {
           value={task}  
           onChange={this.handleChange}
           className={styles.input}
+          required
           />
         <button className={styles.btn}>Add</button>
       </form>

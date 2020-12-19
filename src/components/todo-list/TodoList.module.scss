@@ -77,6 +77,7 @@
 .title {
   font-size: 1.5rem;
   font-weight: 500;
+  margin-bottom: 2rem;
 
   span {
     color: #4c5760;
@@ -86,9 +87,13 @@
   }
 }
 
+.emptyText {
+  text-align: center;
+}
+
 .border {
   position: absolute;
-  bottom: -15px;
+  bottom: -30px;
   left: 0;
   width: 100%;
 

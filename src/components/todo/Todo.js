@@ -25,8 +25,7 @@ export default class Todo extends Component {
         <div className="checkbox"></div>
         { wouldEdit ? (
           <form>
-            <label htmlFor="addTodo">{todo.task}</label>
-            <input type="text" id="editTodo"/>
+            <input type="text" id="editTodo" placeholder={todo.task}/>
           </form>
         ) : (
           <p className="todo-item">{todo.task}</p>

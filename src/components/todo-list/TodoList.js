@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
 
 import Todo from './../todo/Todo';
+import NewTodoForm from './../new-todo-form/NewTodoForm';
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [
-        {
-          id: 1,
-          task: 'Do this activity',
-          isCompleted: false
-        },
-        {
-          id: 2,
-          task: 'Study more react',
-          isCompleted: false
-        }
-      ]
-    }
+    this.state = {todos: []}
+    this.addTodo = this.addTodo.bind(this);
+  }
+
+  addTodo(newTodo) {
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    })
   }
 
   render() {
@@ -27,10 +22,9 @@ export default class TodoList extends Component {
 
     return (
       <div>
-        <form>
-          <input type="text" placeholder="Add a todo" id="addTodoInit"/>
-          <button>Add</button>
-        </form>
+        <NewTodoForm 
+          addTodo={this.addTodo}
+        />
         <ul>
           {todoList}
         </ul>

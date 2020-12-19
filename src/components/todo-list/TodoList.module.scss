@@ -1,0 +1,98 @@
+.tlContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tlWindow {
+  background: #f3dfa6;
+  width: 30%;
+  height: 100%;
+  padding: 2rem 0;
+  margin: 0 auto;
+
+  .title {
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+.tlWindowList {
+  list-style: none;
+
+  li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: 300ms ease;
+  }
+
+  span.badge {
+    background: #98583c;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  li.selected {
+    background: #98583c;
+    color: #fff;
+
+    span.badge {
+      background: #fff;
+      color: #98583c;
+    }
+  }
+}
+
+.tlTasksContainer {
+  background: url('./../../assets/pawprintbg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+
+.tlTasks {
+  background: #fff;
+  border-radius: 12px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  width: 80%;
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  span {
+    color: #6b6b6b;
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 1rem;
+  }
+}
+
+.border {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+  }
+}

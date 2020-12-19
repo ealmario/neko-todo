@@ -4,6 +4,8 @@ import Todo from './../todo/Todo';
 import ArchivedTodo from './../achived-todo/ArchivedTodo';
 import NewTodoForm from './../new-todo-form/NewTodoForm';
 
+import styles from './TodoList.module.scss'
+import neko from './../../assets/neko-bottom-border.png'
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +64,7 @@ export default class TodoList extends Component {
     const { todos, window } = this.state;
     const archived = todos.filter(todo => todo.isCompleted === true);
     const onGoing = todos.filter(todo => todo.isCompleted === false);
-    
+
     const todoList = onGoing.map(todo => (
       <Todo 
         key={todo.id} 
@@ -87,49 +89,73 @@ export default class TodoList extends Component {
       switch (window) {
         case "ongoing" : 
           return (
-            <div>
-              <h6>To-Do <span>{dateString}</span></h6>
-              <NewTodoForm 
-                addTodo={this.add}
-              />
-              <ul>
-                {todoList.length > 0 ? todoList: "No tasks for today"}
-              </ul>
-            </div>
+              <div className={styles.tlTasks}>
+                <h6 className={styles.title}>To-Do <span>{dateString}</span></h6>
+                <NewTodoForm 
+                  addTodo={this.add}
+                />
+                <ul className={styles.tlList}>
+                  {todoList.length > 0 ? todoList: "No tasks for today"}
+                </ul>
+                <figure className={styles.border}>
+                  <img src={neko} alt="Neko Border"/>
+                </figure>
+              </div>
           )
         case "completed" :
           return(
-            <div>
-              <h6>Completed</h6>
-              <ul>
+            <div className={styles.tlTasks}>
+              <h6 className={styles.title}>Completed</h6>
+              <ul className={styles.tlCompleted}>
                 {archivedList.length === 0 ? "No completed tasks" : archivedList}
               </ul>
+              <figure className={styles.border}>
+                <img src={neko} alt="Neko Border"/>
+              </figure>
             </div>
           )
         default:
           return (
-            <div>
-              <h6>To-Do <span>{dateString}</span></h6>
+            <div className={styles.tlTasks}>
+              <h6 className={styles.title}>To-Do <span>{dateString}</span></h6>
               <NewTodoForm 
                 addTodo={this.add}
               />
-              <ul>
+              <ul className={styles.tlList}>
                 {todoList}
               </ul>
+              <figure className={styles.border}>
+                <img src={neko} alt="Neko Border"/>
+              </figure>
             </div>
           )
       }
     }
 
     return (
-      <div>
-        <div>
-          <ul>
-            <li onClick={()=>{this.setWindow("ongoing")}}>On-Going</li>
-            <li onClick={()=>{this.setWindow("completed")}}>Completed</li>
+      <div className={styles.tlContainer}>
+        <div className={styles.tlWindow}>
+          <h6 className={styles.title}>Tasks</h6>
+          <ul className={styles.tlWindowList}>
+            <li 
+              onClick={()=>{this.setWindow("ongoing")}} className={window === "ongoing" ? styles.selected : ""}>
+              On-Going 
+              {onGoing.length !== 0 ? 
+              (<span className={styles.badge}>{onGoing.length}</span>) : ""}
+            </li>
+            <li 
+              onClick={()=>{this.setWindow("completed")}}
+              className={window === "completed" ? styles.selected : ""}
+              >
+              Completed
+              {archived.length !== 0 ? 
+              (<span className={styles.badge}>{archived.length}</span>) : ""}
+            </li>
           </ul>
         </div>
-        {activeWindow(window)}
+        <div className={styles.tlTasksContainer}>
+          {activeWindow(window)}
+        </div>
       </div>
     )
   }

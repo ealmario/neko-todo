@@ -8,7 +8,8 @@ export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: [],
+      window: 'ongoing'
     }
     this.add = this.add.bind(this);
     this.archive = this.archive.bind(this);
@@ -52,10 +53,16 @@ export default class TodoList extends Component {
     this.setState({ todos: updatedTodos })
   }
 
+  // Set Window 
+  setWindow(window) {
+    this.setState({...this.state, window: window})
+  }
+
   render() {
-    const { todos } = this.state;
+    const { todos, window } = this.state;
     const archived = todos.filter(todo => todo.isCompleted === true);
     const onGoing = todos.filter(todo => todo.isCompleted === false);
+    
     const todoList = onGoing.map(todo => (
       <Todo 
         key={todo.id} 
@@ -64,6 +71,7 @@ export default class TodoList extends Component {
         updateTodo={this.update}
         deleteTodo={this.delete}
     />));
+
     const archivedList = archived.map(todo => (
       <ArchivedTodo 
         key={todo.id} 
@@ -71,22 +79,57 @@ export default class TodoList extends Component {
         archiveTodo={this.archive}  
         />
     ))
-    console.log("todos are", todos);
-    console.log("archived are:", archived);
+
+    const date = new Date();
+    const dateString = date.toDateString();
+
+    const activeWindow = (window) => {
+      switch (window) {
+        case "ongoing" : 
+          return (
+            <div>
+              <h6>To-Do <span>{dateString}</span></h6>
+              <NewTodoForm 
+                addTodo={this.add}
+              />
+              <ul>
+                {todoList.length > 0 ? todoList: "No tasks for today"}
+              </ul>
+            </div>
+          )
+        case "completed" :
+          return(
+            <div>
+              <h6>Completed</h6>
+              <ul>
+                {archivedList.length === 0 ? "No completed tasks" : archivedList}
+              </ul>
+            </div>
+          )
+        default:
+          return (
+            <div>
+              <h6>To-Do <span>{dateString}</span></h6>
+              <NewTodoForm 
+                addTodo={this.add}
+              />
+              <ul>
+                {todoList}
+              </ul>
+            </div>
+          )
+      }
+    }
 
     return (
       <div>
-        <NewTodoForm 
-          addTodo={this.add}
-        />
-        <h1>Ongoing tasks</h1>
-        <ul>
-          {todoList}
-        </ul>
-        <h1>Completed</h1>
-        <ul>
-          {archivedList}
-        </ul>
+        <div>
+          <ul>
+            <li onClick={()=>{this.setWindow("ongoing")}}>On-Going</li>
+            <li onClick={()=>{this.setWindow("completed")}}>Completed</li>
+          </ul>
+        </div>
+        {activeWindow(window)}
       </div>
     )
   }

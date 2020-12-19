@@ -1,0 +1,22 @@
+.wrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.taskContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.todoItem {
+  color: #4c5760;
+  margin-left: 0.5rem;
+
+  &:hover {
+    color: #000;
+  }
+}

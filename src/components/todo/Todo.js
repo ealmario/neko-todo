@@ -52,23 +52,30 @@ export default class Todo extends Component {
     const { wouldEdit, task } = this.state
 
     return (
-      <li className="wrapper">
-        <input type="checkbox" onClick={this.handleArchive}/>
-        { wouldEdit ? (
-          <form onSubmit={this.handleUpdate}>
-            <input 
-              type="text" 
-              id="task"
-              name="task" 
-              placeholder={todo.task}
-              value={task}
-              onChange={this.handleChange}
-            />
-            <button>Check</button>
-          </form>
-        ) : (
-          <p className="todo-item">{todo.task}</p>
-        )}
+      <li className={styles.wrapper}>
+        <div className={styles.taskContainer}>
+          <input 
+            type="checkbox" 
+            onClick={this.handleArchive}
+          />
+          { wouldEdit ? (
+            <form onSubmit={this.handleUpdate}>
+              <input 
+                type="text" 
+                id="task"
+                name="task" 
+                placeholder={todo.task}
+                value={task}
+                onChange={this.handleChange}
+                className={styles.todoItem}
+              />
+              <button>Check</button>
+            </form>
+          ) : (
+            <p className={styles.todoItem}>{todo.task}</p>
+          )}
+        </div>
+
         <div className="btn-container">
           <button onClick={this.toggleEdit}>Edit</button>
           <button onClick={this.handleDelete}>Delete</button>

@@ -10,8 +10,9 @@ export default class Todo extends Component {
     }
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleArchive = this.handleArchive.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   toggleEdit() {
@@ -20,8 +21,14 @@ export default class Todo extends Component {
     }))
   }
 
-  handleArchive(todo) {
-    this.props.archiveTodo(todo);
+  handleArchive() {
+    const { archiveTodo, todo} = this.props;
+    archiveTodo(todo.id);
+  }
+
+  handleDelete() {
+    const { deleteTodo, todo} = this.props;
+    deleteTodo(todo.id);
   }
   
   handleUpdate(e) {
@@ -46,7 +53,7 @@ export default class Todo extends Component {
 
     return (
       <li className="wrapper">
-        <div className="checkbox"></div>
+        <input type="checkbox" onClick={this.handleArchive}/>
         { wouldEdit ? (
           <form onSubmit={this.handleUpdate}>
             <input 
@@ -64,7 +71,7 @@ export default class Todo extends Component {
         )}
         <div className="btn-container">
           <button onClick={this.toggleEdit}>Edit</button>
-          <button onClick={()=>{this.handleArchive(todo)}}>Delete</button>
+          <button onClick={this.handleDelete}>Delete</button>
         </div>
       </li>
     )

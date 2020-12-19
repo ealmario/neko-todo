@@ -8,8 +8,7 @@ export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
-      archived: []
+      todos: []
     }
     this.add = this.add.bind(this);
     this.archive = this.archive.bind(this);
@@ -25,17 +24,20 @@ export default class TodoList extends Component {
   }
 
   // Archive a todo
-  archive(archivedTodo) {
-    this.setState({
-      todos: this.state.todos.filter(todo => todo.id !== archivedTodo.id),
-      archived: [...this.state.archived, archivedTodo]
+  archive(id) {
+    const updatedTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return {...todo, isCompleted: !todo.isCompleted}
+      }
+      return todo
     })
+    this.setState({ todos: updatedTodos })
   } 
 
   // Delete the todo (Hard delete)
   delete(id) {
     this.setState({
-      archived: this.state.archived.filter(todo => todo.id !== id)
+      todos: this.state.todos.filter(todo => todo.id !== id)
     })
   }
 
@@ -51,9 +53,24 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const { todos, archived } = this.state;
-    const todoList = todos.map(todo => <Todo key={todo.id} todo={todo} archiveTodo={this.archive} updateTodo={this.update}/>);
-    const archivedList = archived.map(todo => <ArchivedTodo key={todo.id} todo={todo} deleteTodo={this.delete}/>)
+    const { todos } = this.state;
+    const archived = todos.filter(todo => todo.isCompleted === true);
+    const onGoing = todos.filter(todo => todo.isCompleted === false);
+    const todoList = onGoing.map(todo => (
+      <Todo 
+        key={todo.id} 
+        todo={todo} 
+        archiveTodo={this.archive} 
+        updateTodo={this.update}
+        deleteTodo={this.delete}
+    />));
+    const archivedList = archived.map(todo => (
+      <ArchivedTodo 
+        key={todo.id} 
+        todo={todo}
+        archiveTodo={this.archive}  
+        />
+    ))
     console.log("todos are", todos);
     console.log("archived are:", archived);
 
@@ -62,9 +79,11 @@ export default class TodoList extends Component {
         <NewTodoForm 
           addTodo={this.add}
         />
+        <h1>Ongoing tasks</h1>
         <ul>
           {todoList}
         </ul>
+        <h1>Completed</h1>
         <ul>
           {archivedList}
         </ul>

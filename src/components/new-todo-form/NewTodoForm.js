@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import styles from './NewTodo.module.scss'
+
 export default class NewTodoForm extends Component {
   constructor(props) {
     super(props);
@@ -34,17 +36,19 @@ export default class NewTodoForm extends Component {
   render() {
     const { task } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="task"></label>
-        <input 
+      <form onSubmit={this.handleSubmit} className={styles.form}>
+        <label htmlFor="task" aria-label="Add a Todo"></label>
+        <input
+          tabIndex={0} 
           id="task"
           name="task" 
           type="text"
           placeholder="Add a todo"
           value={task}  
           onChange={this.handleChange}
+          className={styles.input}
           />
-        <button>Add</button>
+        <button className={styles.btn}>Add</button>
       </form>
     )
   }

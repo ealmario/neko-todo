@@ -1,0 +1,27 @@
+.form {
+  margin: 1rem 0 2rem 0;
+
+  .input {
+    border: none;
+    background: #f6f6f6;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.25rem 0.5rem;
+    transition: 300ms ease;
+    width: 85%;
+
+    &:focus {
+      background: #f0f0f0;
+      outline: none;
+    }
+
+    &:hover {
+      background:#f0f0f0;
+    }
+  }
+
+  .btn {
+    margin-left: 1rem;
+  }
+}

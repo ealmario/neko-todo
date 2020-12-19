@@ -14,6 +14,7 @@ export default class TodoList extends Component {
     this.add = this.add.bind(this);
     this.archive = this.archive.bind(this);
     this.delete = this.delete.bind(this);
+    this.update = this.update.bind(this);
   }
 
   // Add a todo
@@ -38,9 +39,20 @@ export default class TodoList extends Component {
     })
   }
 
+  // Update the todo
+  update(id, updatedTask) {
+    const updatedTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return {...todo, task: updatedTask}
+      }
+      return todo
+    })
+    this.setState({ todos: updatedTodos })
+  }
+
   render() {
     const { todos, archived } = this.state;
-    const todoList = todos.map(todo => <Todo key={todo.id} todo={todo} archiveTodo={this.archive}/>);
+    const todoList = todos.map(todo => <Todo key={todo.id} todo={todo} archiveTodo={this.archive} updateTodo={this.update}/>);
     const archivedList = archived.map(todo => <ArchivedTodo key={todo.id} todo={todo} deleteTodo={this.delete}/>)
     console.log("todos are", todos);
     console.log("archived are:", archived);

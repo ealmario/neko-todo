@@ -8,6 +8,7 @@ export default class Todo extends Component {
       wouldEdit: false
     }
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleArchive = this.handleArchive.bind(this);
   }
 
   handleEdit() {
@@ -16,25 +17,31 @@ export default class Todo extends Component {
     }))
   }
 
+  handleArchive(todo) {
+    const { archiveTodo } = this.props;
+    archiveTodo(todo);
+  }
+
   render() {
     const { todo } = this.props
     const { wouldEdit } = this.state
 
     return (
-      <div className="wrapper">
+      <li className="wrapper">
         <div className="checkbox"></div>
         { wouldEdit ? (
           <form>
             <input type="text" id="editTodo" placeholder={todo.task}/>
+            <button>Edit</button>
           </form>
         ) : (
           <p className="todo-item">{todo.task}</p>
         )}
         <div className="btn-container">
           <button onClick={this.handleEdit}>Edit</button>
-          <button>Delete</button>
+          <button onClick={()=>{this.handleArchive(todo)}}>Delete</button>
         </div>
-      </div>
+      </li>
     )
   }
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import styles from './Todo.module.scss'
 
 export default class Todo extends Component {
@@ -76,9 +78,13 @@ export default class Todo extends Component {
           )}
         </div>
 
-        <div className="btn-container">
-          <button onClick={this.toggleEdit}>Edit</button>
-          <button onClick={this.handleDelete}>Delete</button>
+        <div className={styles.btnContainer}>
+          <button onClick={this.toggleEdit} title="Edit">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+          <button onClick={this.handleDelete} title="Delete">
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
         </div>
       </li>
     )

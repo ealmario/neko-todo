@@ -1,9 +1,22 @@
 .wrapper {
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  padding: 0.5rem;
+  transition: 300ms ease;
+
+  &:hover {
+    background: #f0f0f0;
+    .btnContainer {
+      opacity: 1;
+    }
+  }
+
+  input {
+    cursor: pointer;
+  }
 }
 
 .taskContainer {
@@ -18,5 +31,18 @@
 
   &:hover {
     color: #000;
+
+    .btnContainer {
+      opacity: 1;
+    }
+  }
+}
+
+.btnContainer {
+  opacity: 0;
+  transition: 300ms ease;
+
+  button:nth-child(1) {
+    margin-right: 0.5rem;
   }
 }

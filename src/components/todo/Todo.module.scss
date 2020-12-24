@@ -73,3 +73,9 @@ p.todoItem {
     margin-right: 0.5rem;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    padding-top: 0;
+  }
+}

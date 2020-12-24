@@ -1,0 +1,15 @@
+.archivedWrapper {
+  border-radius: 8px;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5rem;
+  transition: 300ms ease;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+
+.archivedTodoItem {
+  color: #a1a1a1;
+}

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import styles from './ArchivedTodo.module.scss';
 
 export default class ArchivedTodo extends Component {
   constructor(props) {
@@ -15,8 +16,10 @@ export default class ArchivedTodo extends Component {
     const { todo } = this.props;
 
     return (
-      <li className="archived-wrapper" onClick={this.handleArchive}>
-        <p className="archived-todo-item">{todo.task}</p>
+      <li className={styles.archivedWrapper} onClick={this.handleArchive}>
+        <strike className={styles.archivedTodoItem}>
+          <p>{todo.task}</p>
+        </strike>
       </li>
     )
   }

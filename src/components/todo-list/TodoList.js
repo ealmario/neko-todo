@@ -133,7 +133,7 @@ export default class TodoList extends Component {
     }
 
     return (
-      <div className={styles.tlContainer}>
+      <main className={styles.tlContainer}>
         <div className={styles.tlWindow}>
           <h6 className={styles.title}>Tasks</h6>
           <ul className={styles.tlWindowList}>
@@ -156,7 +156,7 @@ export default class TodoList extends Component {
         <div className={styles.tlTasksContainer}>
           {activeWindow(window)}
         </div>
-      </div>
+      </main>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Todo from './../todo/Todo';
-import ArchivedTodo from './../achived-todo/ArchivedTodo';
+import ArchivedTodo from './../archived-todo/ArchivedTodo';
 import NewTodoForm from './../new-todo-form/NewTodoForm';
 
 import styles from './TodoList.module.scss'

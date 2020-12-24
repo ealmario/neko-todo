@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
 import styles from './Todo.module.scss'
 
 export default class Todo extends Component {
@@ -54,12 +54,15 @@ export default class Todo extends Component {
     const { wouldEdit, task } = this.state
 
     return (
-      <li className={styles.wrapper}>
+      <li className={`${styles.wrapper} ${wouldEdit ? styles.edit : ""}`}>
         <div className={styles.taskContainer}>
-          <input 
-            type="checkbox" 
-            onClick={this.handleArchive}
-          />
+          <div className={styles.checkbox} onClick={this.handleArchive}>
+            <input 
+              type="checkbox" 
+              className={styles.checkbox}
+              onClick={this.handleArchive}
+            />
+          </div>
           { wouldEdit ? (
             <form onSubmit={this.handleUpdate}>
               <input 
@@ -70,11 +73,14 @@ export default class Todo extends Component {
                 value={task}
                 onChange={this.handleChange}
                 className={styles.todoItem}
+                required
               />
-              <button>Check</button>
+              <button className={styles.saveBtn}>
+                <FontAwesomeIcon icon={faCheck}/>
+              </button>
             </form>
           ) : (
-            <p className={styles.todoItem}>{todo.task}</p>
+            <p className={styles.todoItem} onClick={this.toggleEdit}>{todo.task}</p>
           )}
         </div>
 

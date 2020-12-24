@@ -38,18 +38,20 @@ export default class NewTodoForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className={styles.form}>
         <label htmlFor="task" aria-label="Add a Todo"></label>
-        <input
-          tabIndex={0} 
-          id="task"
-          name="task" 
-          type="text"
-          placeholder="Add a todo"
-          value={task}  
-          onChange={this.handleChange}
-          className={styles.input}
-          required
-          />
-        <button className={styles.btn}>Add</button>
+        <div className={styles.inpContainer}>
+          <input
+            tabIndex={0} 
+            id="task"
+            name="task" 
+            type="text"
+            placeholder="Add a todo"
+            value={task}  
+            onChange={this.handleChange}
+            className={styles.input}
+            required
+            />
+          <button className={styles.btn}>Add</button>
+        </div>
       </form>
     )
   }

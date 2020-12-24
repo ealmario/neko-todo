@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Footer from './../footer/Footer';
 
 import Todo from './../todo/Todo';
 import ArchivedTodo from './../archived-todo/ArchivedTodo';
@@ -133,30 +134,33 @@ export default class TodoList extends Component {
     }
 
     return (
-      <main className={styles.tlContainer}>
-        <div className={styles.tlWindow}>
-          <h6 className={styles.title}>Tasks</h6>
-          <ul className={styles.tlWindowList}>
-            <li 
-              onClick={()=>{this.setWindow("ongoing")}} className={window === "ongoing" ? styles.selected : ""}>
-              On-Going 
-              {onGoing.length !== 0 ? 
-              (<span className={styles.badge}>{onGoing.length}</span>) : ""}
-            </li>
-            <li 
-              onClick={()=>{this.setWindow("completed")}}
-              className={window === "completed" ? styles.selected : ""}
-              >
-              Completed
-              {archived.length !== 0 ? 
-              (<span className={styles.badge}>{archived.length}</span>) : ""}
-            </li>
-          </ul>
+      <div className={styles.mainContainer}>
+        <main className={styles.tlContainer}>
+          <div className={styles.tlWindow}>
+            <h6 className={styles.title}>Tasks</h6>
+            <ul className={styles.tlWindowList}>
+              <li 
+                onClick={()=>{this.setWindow("ongoing")}} className={window === "ongoing" ? styles.selected : ""}>
+                On-Going 
+                {onGoing.length !== 0 ? 
+                (<span className={styles.badge}>{onGoing.length}</span>) : ""}
+              </li>
+              <li 
+                onClick={()=>{this.setWindow("completed")}}
+                className={window === "completed" ? styles.selected : ""}
+                >
+                Completed
+                {archived.length !== 0 ? 
+                (<span className={styles.badge}>{archived.length}</span>) : ""}
+              </li>
+            </ul>
+          </div>
+          <div className={styles.tlTasksContainer}>
+            {activeWindow(window)}
+          </div>
+        </main>
+          <Footer />
         </div>
-        <div className={styles.tlTasksContainer}>
-          {activeWindow(window)}
-        </div>
-      </main>
     )
   }
 }

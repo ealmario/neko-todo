@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/neko-todo/static/css/main.18c6382e.chunk.css",
+    "main.js": "/neko-todo/static/js/main.9171ac96.chunk.js",
+    "main.js.map": "/neko-todo/static/js/main.9171ac96.chunk.js.map",
+    "runtime-main.js": "/neko-todo/static/js/runtime-main.ca819a6e.js",
+    "runtime-main.js.map": "/neko-todo/static/js/runtime-main.ca819a6e.js.map",
+    "static/js/2.4b32b445.chunk.js": "/neko-todo/static/js/2.4b32b445.chunk.js",
+    "static/js/2.4b32b445.chunk.js.map": "/neko-todo/static/js/2.4b32b445.chunk.js.map",
+    "index.html": "/neko-todo/index.html",
+    "static/css/main.18c6382e.chunk.css.map": "/neko-todo/static/css/main.18c6382e.chunk.css.map",
+    "static/js/2.4b32b445.chunk.js.LICENSE.txt": "/neko-todo/static/js/2.4b32b445.chunk.js.LICENSE.txt",
+    "static/media/neko-bottom-border.16f39bb8.png": "/neko-todo/static/media/neko-bottom-border.16f39bb8.png",
+    "static/media/TodoList.module.scss": "/neko-todo/static/media/pawprintbg.f14e33df.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca819a6e.js",
+    "static/js/2.4b32b445.chunk.js",
+    "static/css/main.18c6382e.chunk.css",
+    "static/js/main.9171ac96.chunk.js"
+  ]
+}
